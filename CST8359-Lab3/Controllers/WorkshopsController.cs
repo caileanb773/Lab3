@@ -6,7 +6,7 @@ namespace CST8359_Lab3.Controllers
 {
     public class WorkshopsController : Controller
     {
-        List<Rsvp> registrations = new List<Rsvp>();
+        private static List<Rsvp> registrations = new List<Rsvp>();
 
         public IActionResult Index()
         {
