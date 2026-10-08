@@ -6,3 +6,29 @@
 
 <h1>New RSVP</h1>
 <p>Register a new RSVP</p>
+
+<form asp-asp-controller="Workshops" asp-action="Confirm" method="post">
+
+    <label>Enter your full name: </label>
+    <input type="text" name="FullName" />
+
+    <br />
+
+    <label>Which Workshop?</label>
+    <select name="WorkshopTitle">
+        <option>Woodworking</option>
+        <option>Welding</option>
+        <option>Pottery</option>
+    </select>
+
+    <br />
+
+    <label>
+        <input type="checkbox" name="NeedsAccdomodation" />
+        Need Accomodations?
+    </label>
+
+    <br />
+
+    <button type="submit">Confirm Registration</button>
+</form>
