@@ -7,15 +7,15 @@
 <h1>New RSVP</h1>
 <p>Register a new RSVP</p>
 
-<form asp-asp-controller="Workshops" asp-action="Confirm" method="post">
+<form asp-controller="Workshops" asp-action="Confirm" method="post">
 
-    <label>Enter your full name: </label>
-    <input type="text" name="FullName" />
+    <label asp-for="FullName">Enter your full name:</label>
+    <input asp-for="FullName" />
 
     <br />
 
-    <label>Which Workshop?</label>
-    <select name="WorkshopTitle">
+    <label asp-for="WorkshopTitle">Which Workshop?</label>
+    <select asp-for="WorkshopTitle">
         <option>Woodworking</option>
         <option>Welding</option>
         <option>Pottery</option>
@@ -24,8 +24,8 @@
     <br />
 
     <label>
-        <input type="checkbox" name="NeedsAccdomodation" />
-        Need Accomodations?
+        <input asp-for="NeedsAccommodation" />
+        Need Accommodations?
     </label>
 
     <br />
