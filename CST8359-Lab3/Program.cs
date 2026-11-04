@@ -14,8 +14,7 @@ namespace CST8359_Lab3
 
             builder.Services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
-                    builder.Configuration.GetConnectionString(
-                        "DefaultConnection")));
+                    builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
