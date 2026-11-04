@@ -1,4 +1,5 @@
-﻿using CST8359_Lab3.Models;
+﻿using CST8359_Lab3.Data;
+using CST8359_Lab3.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
@@ -6,8 +7,14 @@ namespace CST8359_Lab3.Controllers
 {
     public class WorkshopsController : Controller
     {
-        private static List<Rsvp> registrations = new List<Rsvp>();
+        // step 6: replace in-memory Rsvp list with dbcontext
+        private readonly ApplicationDbContext _context;
 
+        // pass dbcontext to constructor
+        public WorkshopsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -21,7 +28,8 @@ namespace CST8359_Lab3.Controllers
         [HttpPost]
         public IActionResult Confirm(Rsvp rsvp)
         {
-            registrations.Add(rsvp);
+            _context.RsvpDbSet.Add(rsvp);
+            _context.SaveChanges();
 
             ViewData["Message"] = $"Thanks for registering, {rsvp.FullName}!";
             return View(rsvp);
@@ -29,7 +37,7 @@ namespace CST8359_Lab3.Controllers
 
         public IActionResult Registrations()
         {
-            return View(registrations);
+            return View(_context.RsvpDbSet.ToList());
         }
     }
 }

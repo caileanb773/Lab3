@@ -19,6 +19,15 @@ namespace CST8359_Lab3
 
             var app = builder.Build();
 
+            // Step 5: Hook up the db context and seed with initial values
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider
+                    .GetRequiredService<ApplicationDbContext>();
+
+                DbInitializer.Seed(context);
+            }
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
