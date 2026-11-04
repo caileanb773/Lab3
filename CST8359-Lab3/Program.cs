@@ -1,3 +1,6 @@
+using CST8359_Lab3.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace CST8359_Lab3
 {
     public class Program
@@ -8,6 +11,11 @@ namespace CST8359_Lab3
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(
+                    builder.Configuration.GetConnectionString(
+                        "DefaultConnection")));
 
             var app = builder.Build();
 
